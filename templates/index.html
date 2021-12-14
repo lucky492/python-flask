@@ -1,0 +1,61 @@
+  
+<!-- when we use jblock in palce of jblock we will get content of index.html .
+when we use jinja extend content of base.html will be used first.
+
+we can also use this to give different title to different pages-->
+
+
+{% extends 'base.html' %}
+{% block titlex %} HOME {% endblock titlex %}
+{% block ibody %}
+
+<h1>This is my first web page with backend as flask.</h1>
+
+
+<!-- this is form to insert data. -->
+<form action="/" method="POST">
+
+  <div class="mb-3">
+    <label for="todo" class="form-label">To do(title)</label>
+    <input type="text" class="form-control" id="todo" name="todo">
+  </div>
+
+  <div class="mb-3">
+    <label for="desc" class="form-label">descripton</label>
+    <input type="text" class="form-control" name="desc" id="desc">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+<!-- this is data base table -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">sno</th>
+      <th scope="col">todo</th>
+      <th scope="col">desc</th>
+      <th scope="col">date and time</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- jina for loop -->
+    {% for todo in todo %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.todo}}</td>
+      <td>{{todo.desc}}</td>
+      <td>{{todo.date_time}}</td>
+      <td>
+        <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark">update</button>
+          <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark">delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    
+{% endblock ibody %}

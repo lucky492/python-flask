@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block titlex %} update {% endblock titlex %}
+{% block ibody %}
+<style>
+    .head{
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+</style>
+<h1 class="head">update TODO</h1>
+
+
+<!-- this is form to insert data. -->
+<form action="/update/{{todo.sno}}" method="POST">
+
+  <div class="mb-3">
+    <label for="todo" class="form-label">To do(title)</label>
+    <input type="text" class="form-control" id="todo" name="todo" value="{{todo.todo}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="desc" class="form-label">descripton</label>
+    <input type="text" class="form-control" name="desc" id="desc" value="{{todo.desc}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">update</button>
+</form>
+    
+{% endblock ibody %}
